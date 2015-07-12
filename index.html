@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="metaInfos">
 <head>
     <title></title>
     <script type="text/javascript" src="angular.js"></script>
     <script type="text/javascript" src="jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="app.js"></script>
 </head>
 <body>
-    Name: <input ng-model="name" />
-    <h2>{{ name }}</h2>
+    <div ng-controller="UserCtrl">
+        Name_1: <input ng-model="name" />
+        <h2>{{ name }}</h2>
+    </div>
+    <div ng-controller="UserCtrl">
+        Name_2: <input ng-model="name" />
+        <h2>{{ name }}</h2>
+    </div>
+    <div>
+        Outside the scope: 
+        <h2>{{ name }}</h2>
+    </div>
 </body>
 </html>
