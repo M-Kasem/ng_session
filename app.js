@@ -1,22 +1,29 @@
-var metaInfos = angular.module('metaInfos', []);
+var metaInfos = angular.module('metaInfos', ['ngRoute']);
 
-metaInfos.controller('UserCtrl', ['$scope', function($scope){
-    $scope.names = ['Mohamed', 'Kareem', 'Ahmed'];
-    $scope.toggles = [true, true, true];
-    $scope.name = 'Anonymous';
-    $scope.addName = function(name){
-        $scope.names.push(name);
-        $scope.toggles.push(true);
-    }
-    $scope.updateName = function(index, name){
-        $scope.names[index] = name;
-        $scope.toggleName(index);
-    }
-    $scope.deleteName = function(index){
-        $scope.names.splice(index,1);
-        $scope.toggles.splice(index,1);
-    }
-    $scope.toggleName = function(name){
-        $scope.toggles[name] = !$scope.toggles[name];
-    }
+metaInfos.config(['$routeProvider', function($routeProvider){
+    $routeProvider.
+        when('/users', {
+            templateUrl: 'users-list.html',
+            controller: 'UsersCtrl'
+        }).
+        when('/user/:user_id', {
+            templateUrl: 'user-detail.html',
+            controller: 'UserDetailCtrl'
+        }).
+        otherwise({
+            redirectTo: '/users'
+        })
+}]);
+
+metaInfos.controller('UsersCtrl', ['$scope', '$http', function($scope, $http){
+    $http.get('file:///home/msamy/Dropbox/workspace/ng_session/data.json').success(function(data) {
+      $scope.users = data;
+    });
+}]);
+
+metaInfos.controller('UserDetailCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams){
+
+    $http.get('file:///home/msamy/Dropbox/workspace/ng_session/phone_details/'+$routeParams.user_id+'.json').success(function(data) {
+      $scope.user = data;
+    });    
 }]);

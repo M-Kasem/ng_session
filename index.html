@@ -2,25 +2,12 @@
 <html ng-app="metaInfos">
 <head>
     <title></title>
-    <script type="text/javascript" src="angular.js"></script>
     <script type="text/javascript" src="jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="angular-route.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </head>
 <body>
-    <div ng-controller="UserCtrl">
-        <h1>Current Names:</h1>
-        <div ng-repeat="n in names">
-            <h3 ng-click="toggleName($index)" ng-show="toggles[$index]">{{ n }}</h3>
-            <input ng-model="n" ng-hide="toggles[$index]" />
-            <button ng-click="updateName($index, n)" ng-hide="toggles[$index]">Update</button>
-            <button ng-click="deleteName($index)" ng-hide="toggles[$index]">Delete</button>
-        </div>
-        <hr>
-        <div>
-            <h1>New name: <input ng-model="name" /></h1>
-            <h3>{{ name }}</h3>
-            <button ng-click="addName(name)">Add</button>
-        </div>
-    </div>
+    <div ng-view> </div>    
 </body>
 </html>
