@@ -1,7 +1,7 @@
 <input ng-model="query" />
 <h1>Current Users:</h1>
 <div ng-repeat="user in users | filter:query">
-    <a ng-href="file:///home/msamy/Dropbox/workspace/ng_session/index.html#/user/{{$index+1}}"><h3>{{ user.name | uppercase}}</h3></a>
-    <p>{{ user.age }}</p>
-    <p>{{ user.mail }}</p>
+    <a ng-href="/#/user/{{$index+1}}"><h3>{{ user.name | uppercase}}</h3></a>
+    <p>Age: {{ user.age }}</p>
+    <p>Mail: {{ user.mail }}</p>
 </div>
