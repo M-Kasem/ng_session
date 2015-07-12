@@ -23,7 +23,7 @@ metaInfos.controller('UsersCtrl', ['$scope', '$http', function($scope, $http){
 
 metaInfos.controller('UserDetailCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams){
 
-    $http.get('file:///home/msamy/Dropbox/workspace/ng_session/phone_details/'+$routeParams.user_id+'.json').success(function(data) {
+    $http.get('file:///home/msamy/Dropbox/workspace/ng_session/user_details/'+$routeParams.user_id+'.json').success(function(data) {
       $scope.user = data;
-    });    
+    });
 }]);
