@@ -8,16 +8,15 @@
 </head>
 <body>
     <div ng-controller="UserCtrl">
-        Name_1: <input ng-model="name" />
-        <h2>{{ name }}</h2>
-    </div>
-    <div ng-controller="UserCtrl">
-        Name_2: <input ng-model="name" />
-        <h2>{{ name }}</h2>
-    </div>
-    <div>
-        Outside the scope: 
-        <h2>{{ name }}</h2>
+        <h1>Current Names:</h1>
+        <div ng-repeat="n in names">
+            <h3>{{ n }}</h3>
+        </div>
+        <div>
+            New name: <input ng-model="name" />
+            <h2>{{ name }}</h2>
+            <button ng-click="addName(name)">Add</button>
+        </div>
     </div>
 </body>
 </html>
